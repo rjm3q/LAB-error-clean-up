@@ -1,15 +1,5 @@
-// import '../styles/main.scss'; // You have to import your styles for them to work. Comment in this line
-
-const startApp = () => {
-  htmlStructure(); // always load first
-  header();
-  startSortingBtn();
-  events(); // always load last
-};
-
-const students = [];
-const voldysArmy; // starts as an empty array
-
+import '../styles/main.scss'; // You have to import your styles for them to work. Comment in this line
+import '../data.js';
 
 const events = () => {
   // get form on the DOM on button click
@@ -41,27 +31,32 @@ const events = () => {
     if (e.target.id.includes('filter')) {
       const [, house] = e.target.id.split('--');
 
-        if (house === 'all') {
-          studentsOnDom('#students', students);
-        } else if (house) {
-          const filter = students.filter((student) => student.house === house);
-          studentsOnDom('#students', filter, house);
-        }
+      if (house === 'all') {
+        studentsOnDom('#students', students);
+      } else if (house) {
+        const filter = students.filter((student) => student.house === house);
+        studentsOnDom('#students', filter, house);
+      }
     }
   });
+};
+
+const renderToDOM = (divId, content) => {
+  const selectedDiv = document.querySelector(divId);
+  selectedDiv.innerHTML = content;
 };
 
 // ********** HTML Components  ********** //
 // the basic HMTL structure of app
 const htmlStructure = () => {
-    const domString = `
+  const domString = `
     <div id="header-container" class="header mb-3"></div>
     <div id="form-container" class="container mb-3 text-center"></div>
     <div id="filter-container" class="container mb-3"></div>
     <div id="student-container" class="container d-flex"></div>
     `;
 
-  renderToDOM('#app', domString)
+  renderToDOM('#app', domString);
 };
 
 const header = () => {
@@ -85,15 +80,15 @@ const startSortingBtn = () => {
 
 const studentAreas = () => {
   const domString = `<div id="students">No Students</div>
-  <div id="voldy">No Death Eaters</div>`
+  <div id="voldy">No Death Eaters</div>`;
 
   renderToDOM('#student-container', domString);
 };
 
 const studentsOnDom = (divId, array, house = 'Hogwarts') => {
   let domString = '';
-  if(!array.length){
-    domString += `NO ${house.toUpperCase()} STUDENTS`
+  if (!array.length) {
+    domString += `NO ${house.toUpperCase()} STUDENTS`;
   }
 
   array.forEach((student) => {
@@ -161,7 +156,6 @@ const createId = (array) => {
   return 0;
 };
 
-
 // add form to DOM on start-sorting click.
 // Add events for form after the form is on the DOM
 const form = () => {
@@ -184,11 +178,13 @@ const form = () => {
   document.querySelector('#sorting').addEventListener('submit', sortStudent);
 };
 
-const renderToDOM = (divId, content) => {
-  const selectedDiv = document.querySelector(divId);
-  selectedDiv.innerHTML = content;
-};
 
+const startApp = () => {
+  htmlStructure(); // always load first
+  header();
+  startSortingBtn();
+  events(); // always load last
+};
 startApp();
 
 const houses = [
