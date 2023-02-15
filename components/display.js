@@ -1,4 +1,5 @@
 import renderToDOM from '../utils/renderToDom';
+import sortStudent from '..utils/sortstud';
 
 const htmlStructure = () => {
   const domString = `
