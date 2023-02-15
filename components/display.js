@@ -1,4 +1,6 @@
 import renderToDOM from '../utils/renderToDom';
+import { houses, students } from '../utils/data';
+import createId from '../utils/createid';
 
 const htmlStructure = () => {
   const domString = `
