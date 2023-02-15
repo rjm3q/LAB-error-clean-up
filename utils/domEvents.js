@@ -1,3 +1,6 @@
+import { form, filterBtnRow, studentAreas, studentsOnDom } from '../components/display';
+import { students, voldysArmy } from './data';
+
 const events = () => {
   // get form on the DOM on button click
   document.querySelector('#start-sorting').addEventListener('click', () => {
@@ -37,3 +40,5 @@ const events = () => {
     }
   });
 };
+
+export default events;
