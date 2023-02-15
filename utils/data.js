@@ -1,6 +1,6 @@
-export const students = [];
-export const voldysArmy = [];
-export const houses = [
+const students = [];
+const voldysArmy = [];
+const houses = [
   {
     house: 'gryffindor',
     crest:
@@ -22,3 +22,5 @@ export const houses = [
       'https://static.wikia.nocookie.net/pottermore/images/4/4f/Ravenclaw_crest.png'
   }
 ];
+
+export { students, voldysArmy, houses };

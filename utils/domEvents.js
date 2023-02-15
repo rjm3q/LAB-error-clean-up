@@ -1,3 +1,6 @@
+import { form, filterBtnRow, studentAreas, studentsOnDom } from '../components/display';
+import { students, voldysArmy } from './data';
+
 const events = () => {
   // get form on the DOM on button click
   document.querySelector('#start-sorting').addEventListener('click', () => {
@@ -37,3 +40,14 @@ const events = () => {
     }
   });
 };
+
+// Create a new ID for the students
+const createId = (array) => {
+  if (array.length) {
+    const idArray = array.map((el) => el.id);
+    return Math.max(...idArray) + 1;
+  }
+  return 0;
+};
+
+export { events, createId };
