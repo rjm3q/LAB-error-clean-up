@@ -1,5 +1,4 @@
 import renderToDOM from '../utils/renderToDom';
-import sortStudent from '..utils/sortstud';
 
 const htmlStructure = () => {
   const domString = `
@@ -66,6 +65,26 @@ const studentsOnDom = (divId, array, house = 'Hogwarts') => {
   renderToDOM(divId, domString);
 };
 
+const sortStudent = (e) => {
+  e.preventDefault();
+  const sortingHat = houses[Math.floor(Math.random() * houses.length)];
+
+  if (e.target.id === 'sorting') {
+    const student = document.querySelector('#student-name');
+
+    // create the new student object
+    students.push({
+      id: createId(students),
+      name: student.value,
+      house: sortingHat.house,
+      crest: sortingHat.crest
+    });
+
+    student.value = ''; // reset value of input
+    studentsOnDom('#students', students);
+  }
+};
+
 const form = () => {
   const domString = `<form id="sorting" class="d-flex flex-column form-floating ">
     <input
@@ -98,4 +117,6 @@ const filterBtnRow = () => {
   renderToDOM('#filter-container', domString);
 };
 
-export { htmlStructure, header, startSortingBtn, studentAreas, studentsOnDom, form, filterBtnRow};
+export {
+  htmlStructure, header, startSortingBtn, studentAreas, studentsOnDom, form, filterBtnRow, sortStudent
+};
