@@ -1,4 +1,5 @@
-import { htmlStructure, header, startSortingBtn, events } from '../components/display';
+import { htmlStructure, header, startSortingBtn } from '../components/display';
+import events from './domEvents';
 
 const startApp = () => {
   htmlStructure(); // always load first

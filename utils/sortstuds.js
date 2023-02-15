@@ -1,7 +1,5 @@
-import { createId } from './domEvents';
-import { houses, students } from './data';
-import { studentsOnDom } from '../components/display';
-
+import { houses, students } from "./data";
+import c
 const sortStudent = (e) => {
   e.preventDefault();
   const sortingHat = houses[Math.floor(Math.random() * houses.length)];
